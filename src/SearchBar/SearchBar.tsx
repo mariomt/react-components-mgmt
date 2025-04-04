@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect, MouseEvent, useState } from "react";
 import { FilterList } from "./ui/FilterList";
 import { ISearchBarItemElement, ISerarchBarFilters } from "./ui/itemElement.Interface";
 import { FilterValue } from "./ui/FilterValue";
@@ -18,24 +18,24 @@ interface SearchBarProps {
  
 type SearchBarStatus = 'filters' | 'value' | 'closed';
 
-const SearchBar: FC<SearchBarProps> = ({ Label, size, rounded, placeholder, data, color, customColor, onChange }) => {
+export const SearchBar: FC<SearchBarProps> = ({ Label, size, rounded, placeholder, data, color, customColor, onChange }) => {
     const [status, setStatus] = useState<SearchBarStatus>('closed');
     const [availableFilters, setAvailableFilters] = useState<Array<ISearchBarItemElement>>(data);
     const [selectedFilter, setSelectedFilter] = useState<ISearchBarItemElement | null>(null);
     const [appliedFilters, setAppliedFilters] = useState<Array<ISerarchBarFilters>>([]);
 
-    let containerCSS = "border border-gray-300 w-full cursor-text shadow-sm px-5 flex items-center ";
+    let containerCSS = "border border-gray-300 w-full cursor-text shadow-sm px-5 py-1 flex items-center justify-between ";
     switch (size) {
         case 'sm':
-            containerCSS += 'h-[25px] ';
+            containerCSS += 'min-h-[25px] ';
             break;
 
         case 'lg':
-            containerCSS += 'h-[35px] ';
+            containerCSS += 'min-h-[35px] ';
             break;
 
         default:
-            containerCSS += 'h-[30px] ';
+            containerCSS += 'min-h-[30px] ';
             break;
     }
 
@@ -68,6 +68,11 @@ const SearchBar: FC<SearchBarProps> = ({ Label, size, rounded, placeholder, data
         })
     }
 
+    const vaciarFiltros = (e: MouseEvent<HTMLElement>) => {
+        e.stopPropagation();
+        setAppliedFilters([]);
+    }
+
     useEffect(() => {
         setAvailableFilters(data.filter(el => !appliedFilters.some(el2 => el2.key === el.key)));
         if (onChange) {
@@ -92,18 +97,21 @@ const SearchBar: FC<SearchBarProps> = ({ Label, size, rounded, placeholder, data
 
     return (<div className="relative">
         {
-            Label && <p>{Label}</p>
+            Label && <p className="text-gray-500 pl-3">{Label}</p>
         }
         <div className={containerCSS}
             onClick={() => {
-                setStatus("filters");
+                if (availableFilters.length > 0) {
+                    setStatus("filters");
+                }
             }}
         >
-            { appliedFilters.length>0 
-            ? appliedFilters.map(el => (
-                <FilterElement key={el.key} element={el} onClose={deleteFilter}/>
-            ))
-            :<span className="text-gray-400 font-medium">{placeholder || 'Buscar:'}</span>
+            { appliedFilters.length > 0 
+            ? <><div className="flex items-center flex-wrap overflow-hidden gap-1">{ appliedFilters.map(el => (
+                    <FilterElement key={el.key} element={el} onClose={deleteFilter}/>
+                ))}
+            </div><div className="px-2 border border-dashed rounded-full text-nowrap text-gray-500 cursor-pointer ml-2 " onClick={vaciarFiltros}>X Borrar</div></>
+            :<span className="text-gray-500 pl-2 pr-3 font-normal rounded-full inline-block border border-dashed">{placeholder || '+ Agregar Filtro:'}</span>
             }
         </div>
         {
@@ -126,5 +134,3 @@ const SearchBar: FC<SearchBarProps> = ({ Label, size, rounded, placeholder, data
         }
     </div>);
 }
- 
-export default SearchBar;

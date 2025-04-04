@@ -24,14 +24,18 @@ export const FilterValue: FC<IFilterValueProps> = ({ children, onClose, title, c
 
     const handleClick = () => {
         if (inputRef && inputRef.current) {
-            applyChanges(inputRef.current.value);
-            inputRef.current.value = "";
-            onClose();
+            if (inputRef.current.value.length != 0 ) {
+                applyChanges(inputRef.current.value);
+                inputRef.current.value = "";
+                onClose();
+            } else {
+                inputRef.current?.focus();
+            }
         }
     }
 
     return (
-        <div className="absolute border border-gray-300 shadow min-w-[180px] left-3">
+        <div className="relative inline-block border border-gray-300 shadow min-w-[180px] left-3 top-1">
             {children || <div>
                 <div className={extraCSS} style={stylecss}>
                     <p>{title || "Filtro"}</p>

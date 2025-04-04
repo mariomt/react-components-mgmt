@@ -1,0 +1,1 @@
+{"root":["./src/global.d.ts","./src/main.ts","./src/searchbar/searchbar.tsx","./src/searchbar/ui/filterelement.tsx","./src/searchbar/ui/filterlist.tsx","./src/searchbar/ui/filtervalue.tsx","./src/searchbar/ui/searchbarcolor.type.ts","./src/searchbar/ui/functions.ts","./src/searchbar/ui/itemelement.interface.ts"],"version":"5.7.3"}

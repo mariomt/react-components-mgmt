@@ -23,7 +23,7 @@ export const FilterList: FC<IFilterListProps> = ({ children, onClose, onSelectEl
     }
     
     return (
-        <div className="absolute border border-gray-300 shadow min-w-[180px] left-3">
+        <div className="relative inline-block border border-gray-300 shadow min-w-[180px] left-3 top-1">
             {children || <div>
                 <div className={extraCSS} style={stylecss}>
                     <p>Filtrar por:</p>
