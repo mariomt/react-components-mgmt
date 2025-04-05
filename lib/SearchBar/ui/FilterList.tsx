@@ -23,7 +23,7 @@ export const FilterList: FC<IFilterListProps> = ({ children, onClose, onSelectEl
     }
     
     return (
-        <div className="absolute inline-block border border-gray-300 shadow min-w-[180px] left-3"
+        <div className="absolute inline-block border border-gray-300 shadow min-w-[180px] left-3 bg-white"
             style={{
                 zIndex: 100,
             }}

@@ -35,7 +35,7 @@ export const FilterValue: FC<IFilterValueProps> = ({ children, onClose, title, c
     }
 
     return (
-        <div className="absolute inline-block border border-gray-300 shadow min-w-[180px] left-3"
+        <div className="absolute inline-block border border-gray-300 shadow min-w-[180px] left-3 bg-white"
             style={{
                 zIndex: 100,
             }}
@@ -52,7 +52,8 @@ export const FilterValue: FC<IFilterValueProps> = ({ children, onClose, title, c
                         placeholder="Inicia con"
                         className="borde-0 border-b border-b-gray-300 py-1 px-2 text-gray-500 outline-none"
                         style={{
-                            outline: 'none',
+                            outline: '2px solid transparent',
+                            outlineOffset: "2px",
                         }}
                     />
                 </div>

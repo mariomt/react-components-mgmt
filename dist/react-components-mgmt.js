@@ -1,5 +1,5 @@
 import { jsx as e, jsxs as n, Fragment as E } from "react/jsx-runtime";
-import { useRef as I, useState as y, useEffect as P } from "react";
+import { useRef as I, useState as g, useEffect as P } from "react";
 const N = (l) => {
   switch (l) {
     case "secondary":
@@ -13,13 +13,13 @@ const N = (l) => {
     default:
       return "bg-gray-900 ";
   }
-}, R = ({ children: l, onClose: a, onSelectElement: c, data: p, color: o, customColor: d }) => {
+}, R = ({ children: l, onClose: a, onSelectElement: c, data: u, color: o, customColor: d }) => {
   let i = "w-full h-[40px] flex items-center justify-between p-2 text-white ";
   const r = {};
   return d ? r.backgroundColor = d : i += N(o), /* @__PURE__ */ e(
     "div",
     {
-      className: "absolute inline-block border border-gray-300 shadow min-w-[180px] left-3",
+      className: "absolute inline-block border border-gray-300 shadow min-w-[180px] left-3 bg-white",
       style: {
         zIndex: 100
       },
@@ -28,7 +28,7 @@ const N = (l) => {
           /* @__PURE__ */ e("p", { children: "Filtrar por:" }),
           /* @__PURE__ */ e("p", { className: "cursor-pointer", onClick: a, children: "X" })
         ] }),
-        /* @__PURE__ */ e("div", { className: "", children: /* @__PURE__ */ e("ul", { children: p.map((s) => /* @__PURE__ */ n(
+        /* @__PURE__ */ e("div", { className: "", children: /* @__PURE__ */ e("ul", { children: u.map((s) => /* @__PURE__ */ n(
           "li",
           {
             className: "cursor-pointer hover:bg-gray-200 px-3 py-1 text-gray-500 font-normal",
@@ -43,13 +43,13 @@ const N = (l) => {
       ] })
     }
   );
-}, V = ({ children: l, onClose: a, title: c, color: p, customColor: o, applyChanges: d }) => {
+}, V = ({ children: l, onClose: a, title: c, color: u, customColor: o, applyChanges: d }) => {
   let i = "w-full h-[40px] flex items-center justify-between p-2 text-white ";
   const r = I(null), s = {};
-  return o ? s.backgroundColor = o : i += N(p), /* @__PURE__ */ e(
+  return o ? s.backgroundColor = o : i += N(u), /* @__PURE__ */ e(
     "div",
     {
-      className: "absolute inline-block border border-gray-300 shadow min-w-[180px] left-3",
+      className: "absolute inline-block border border-gray-300 shadow min-w-[180px] left-3 bg-white",
       style: {
         zIndex: 100
       },
@@ -66,7 +66,8 @@ const N = (l) => {
             placeholder: "Inicia con",
             className: "borde-0 border-b border-b-gray-300 py-1 px-2 text-gray-500 outline-none",
             style: {
-              outline: "none"
+              outline: "2px solid transparent",
+              outlineOffset: "2px"
             }
           }
         ) }),
@@ -96,37 +97,37 @@ const N = (l) => {
       children: "x"
     }
   )
-] }), L = ({ Label: l, size: a, rounded: c, placeholder: p, data: o, color: d, customColor: i, onChange: r }) => {
-  const [s, b] = y("closed"), [h, C] = y(o), [m, g] = y(null), [f, k] = y([]);
-  let u = "border border-gray-300 w-full cursor-text shadow-sm px-5 py-1 flex items-center justify-between ";
+] }), L = ({ Label: l, size: a, rounded: c, placeholder: u, data: o, color: d, customColor: i, onChange: r }) => {
+  const [s, b] = g("closed"), [h, C] = g(o), [m, y] = g(null), [f, k] = g([]);
+  let p = "border border-gray-300 w-full cursor-text shadow-sm px-5 py-1 flex items-center justify-between ";
   switch (a) {
     case "sm":
-      u += "min-h-[25px] ";
+      p += "min-h-[25px] ";
       break;
     case "lg":
-      u += "min-h-[35px] ";
+      p += "min-h-[35px] ";
       break;
     default:
-      u += "min-h-[30px] ";
+      p += "min-h-[30px] ";
       break;
   }
   switch (c) {
     case "sm":
-      u += "rounded ";
+      p += "rounded ";
       break;
     case "md":
-      u += "rounded-md ";
+      p += "rounded-md ";
       break;
     default:
-      u += "rounded-full ";
+      p += "rounded-full ";
       break;
   }
   const F = (t) => {
-    g(t), b("value");
-  }, w = () => {
-    b("closed"), g(null);
+    y(t), b("value");
+  }, v = () => {
+    b("closed"), y(null);
   }, S = (t) => {
-    k((x) => x.filter((v) => v.key != t));
+    k((x) => x.filter((w) => w.key != t));
   }, j = (t) => {
     t.stopPropagation(), k([]);
   };
@@ -139,10 +140,10 @@ const N = (l) => {
         inputValue: t,
         ...m
       };
-      k((v) => [
-        ...v,
+      k((w) => [
+        ...w,
         x
-      ]), g(null);
+      ]), y(null);
     }
   };
   return /* @__PURE__ */ n("div", { className: "relative", children: [
@@ -150,20 +151,20 @@ const N = (l) => {
     /* @__PURE__ */ e(
       "div",
       {
-        className: u,
+        className: p,
         onClick: () => {
           h.length > 0 && b("filters");
         },
         children: f.length > 0 ? /* @__PURE__ */ n(E, { children: [
           /* @__PURE__ */ e("div", { className: "flex items-center flex-wrap overflow-hidden gap-1", children: f.map((t) => /* @__PURE__ */ e(X, { element: t, onClose: S }, t.key)) }),
           /* @__PURE__ */ e("div", { className: "px-2 border border-dashed rounded-full text-nowrap text-gray-500 cursor-pointer ml-2 ", onClick: j, children: "X Borrar" })
-        ] }) : /* @__PURE__ */ e("span", { className: "text-gray-500 pl-2 pr-3 font-normal rounded-full inline-block border border-dashed", children: p || "+ Agregar Filtro:" })
+        ] }) : /* @__PURE__ */ e("span", { className: "text-gray-500 pl-2 pr-3 font-normal rounded-full inline-block border border-dashed", children: u || "+ Agregar Filtro:" })
       }
     ),
     s == "filters" && /* @__PURE__ */ e(
       R,
       {
-        onClose: w,
+        onClose: v,
         onSelectElement: F,
         color: d,
         data: h,
@@ -173,7 +174,7 @@ const N = (l) => {
     s == "value" && /* @__PURE__ */ e(
       V,
       {
-        onClose: w,
+        onClose: v,
         title: m == null ? void 0 : m.label,
         color: d,
         customColor: i,
