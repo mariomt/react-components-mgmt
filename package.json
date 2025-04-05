@@ -6,21 +6,20 @@
   "files": ["dist"],
   "main": "./dist/react-components-mgmt.umd.cjs",
   "module": "./dist/react-components-mgmt.js",
+  "types": "dist/main.d.ts",
   "exports": {
     ".": {
       "import": "./dist/react-components-mgmt.js",
-      "require": "./dist/react-components-mgmt.umd.cjs",
-      "types": "./dist/main.d.ts"
-    },
-    "./src/index.css": "./dist/react-components-mgmt.css"
+      "require": "./dist/react-components-mgmt.umd.cjs"
+    }
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc --p ./tsconfig-build.json && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@tailwindcss/vite": "^4.1.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

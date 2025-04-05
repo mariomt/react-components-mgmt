@@ -4,6 +4,7 @@ import { ISearchBarItemElement, ISerarchBarFilters } from "./ui/itemElement.Inte
 import { FilterValue } from "./ui/FilterValue";
 import { SearchBarColorType } from "./ui/SearchBarColor.type";
 import FilterElement from "./ui/FilterElement";
+import '../styles.css';
 
 interface SearchBarProps {
     Label?: string;
