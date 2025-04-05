@@ -16,6 +16,9 @@
       "require": "./dist/react-components-mgmt.umd.cjs",
       "types": "./dist/main.d.ts",
       "style": "./dist/react-components-mgmt.css"
+    },
+    "./dist/react-components-mgmt.css": {
+      "default": "./dist/react-components-mgmt.css"
     }
   },
   "scripts": {
