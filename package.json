@@ -8,11 +8,12 @@
   ],
   "main": "./dist/react-components-mgmt.umd.cjs",
   "module": "./dist/react-components-mgmt.js",
-  "types": "dist/main.d.ts",
+  "types": "./dist/main.d.ts",
   "exports": {
     ".": {
       "import": "./dist/react-components-mgmt.js",
-      "require": "./dist/react-components-mgmt.umd.cjs"
+      "require": "./dist/react-components-mgmt.umd.cjs",
+      "types": "./dist/main.d.ts"
     }
   },
   "scripts": {
